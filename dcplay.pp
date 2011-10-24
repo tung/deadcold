@@ -276,7 +276,11 @@ begin
 		DCGameMessage('Game Over.');
 		GamePause;
 
-		FName := FSearch( SC^.PC^.Name + '.txt' , 'savegame\' );
+		{$ifdef WINDOWS}
+			FName := FSearch( SC^.PC^.Name + '.txt' , 'savegame\' );
+		{$else}
+			FName := FSearch( SC^.PC^.Name + '.txt' , 'savegame/' );
+		{$endif}
 		if ( FName <> '' ) and PLAY_DangerOn then begin
 			Assign(F,FName);
 			Erase(F);
@@ -323,7 +327,11 @@ var
 begin
 	{ Create the menu. }
 	RPM := CreateRPGMenu( LightBlue , Green , LightGreen , 20 , 8 , 60 , 23 );
-	BuildFileMenu( RPM , 'SAVEGAME\*.txt' );
+	{$ifdef WINDOWS}
+		BuildFileMenu( RPM , 'savegame\*.txt' );
+	{$else}
+		BuildFileMenu( RPM , 'savegame/*.txt' );
+	{$endif}
 
 	if RPM^.numitem < 1 then begin
 		{ No save game files were found. Jump to STARTGAME, }
@@ -341,7 +349,11 @@ begin
 		{ main menu. Otherwise, load the file and pass the }
 		{ scenario to PLAYSCENE. }
 		if FName <> '' then begin
-			SC := LoadGame( 'savegame\' + FName );
+			{$ifdef WINDOWS}
+				SC := LoadGame( 'savegame\' + FName );
+			{$else}
+				SC := LoadGame( 'savegame/' + FName );
+			{$endif}
 			PlayScene( SC );
 		end;
 	end;

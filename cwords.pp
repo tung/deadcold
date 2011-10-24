@@ -15,13 +15,13 @@ Type
 		Pass: Boolean;
 	end;
 
+	CloudPtr = ^Cloud;
 	Cloud = Record
 		Kind: Integer;
 		Duration: LongInt;	{The ComTime at which the cloud dissipates.}
 		M: ModelPtr;
-		Next: ^Cloud;
+		Next: CloudPtr;
 	end;
-	CloudPtr = ^Cloud;
 
 	MPUDesc = Record
 		name: String;
@@ -29,15 +29,15 @@ Type
 		SecPass: Integer;
 	end;
 
+	MPUPtr = ^MPU;
 	MPU = Record	{This is the record that describes computer}
 			{terminals. The name, MPU, comes from the}
 			{anime series Cowboy Bebop.}
 		Kind: Integer;
 		M: ModelPtr;
 		Attr: String;	{ MPU Attributes }
-		Next: ^MPU;
+		Next: MPUPtr;
 	end;
-	MPUPtr = ^MPU;
 
 Const
 	NumCloud = 3;
@@ -121,10 +121,15 @@ begin
 	it^.Duration := D;
 	it^.M := GAddModel(gb,CloudGFX,CloudMan[C].color,White,CloudMan[C].Pass,X,Y,MKIND_Cloud);
 
-	if it^.M = Nil then Dispose(it);
+	if it^.M = Nil then begin
+		Dispose(it);
+		it := Nil;
+		end
+	else begin
 
-	{Set the obscurement for this model.}
-	it^.M^.Obs := CloudMan[C].Obscurement;
+		{Set the obscurement for this model.}
+		it^.M^.Obs := CloudMan[C].Obscurement;
+	end;
 
 	AddCloud := it;
 end;
@@ -189,6 +194,7 @@ begin
 		GRemoveModel(B^.M,gb);
 
 		Dispose(B);
+		B := Nil;
 		end
 	else begin
 		{We found the attribute we want to delete and have another}
@@ -199,6 +205,7 @@ begin
 		GRemoveModel(B^.M,gb);
 
 		Dispose(B);
+		B := Nil;
 	end;
 end;
 
@@ -232,7 +239,10 @@ begin
 	it^.Kind := C;
 	it^.M := GAddModel(gb,MPUGFX,MPUMan[C].color,White,False,X,Y,MKIND_MPU);
 
-	if it^.M = Nil then Dispose(it);
+	if it^.M = Nil then begin
+		Dispose(it);
+		it := Nil;
+	end;
 
 	AddMPU := it;
 end;
@@ -283,6 +293,7 @@ begin
 		GRemoveModel(B^.M,gb);
 
 		Dispose(B);
+		B := Nil;
 		end
 	else begin
 		{We found the attribute we want to delete and have another}
@@ -293,6 +304,7 @@ begin
 		GRemoveModel(B^.M,gb);
 
 		Dispose(B);
+		B := Nil;
 	end;
 end;
 

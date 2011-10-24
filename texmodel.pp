@@ -12,6 +12,7 @@ Const
 
 
 Type
+	ModelPtr = ^Model;
 	Model = Record
 		gfx: char;
 		color,acolor,bcolor: byte;
@@ -19,12 +20,11 @@ Type
 		CoHab: boolean;		{Can this model share its location?}
 		X,Y: Integer;		{X and Y.}
 		Kind: Integer;		{What KIND of a model is this?}
-		Next: ^Model;
+		Next: ModelPtr;
 	end;
-	ModelPtr = ^Model;
 	ModelGrid = Array [1..XMax,1..YMax] of boolean;
 
-Function AddModel(var MP: ModelPtr; var MG: ModelGrid; gfx: char; color,bc: byte; choab: boolean; X,Y,Kind: Integer): ModelPtr;
+Function AddModel(var MP: ModelPtr; var MG: ModelGrid; gfx: char; color,bc: byte; cohab: boolean; X,Y,Kind: Integer): ModelPtr;
 Procedure DisposeModelList(MP: ModelPtr);
 Function FindModelXY(MP: ModelPtr; X,Y: Integer): ModelPtr;
 Function ModelPresent(var mg: ModelGrid; X,Y: Integer): Boolean;

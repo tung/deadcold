@@ -1,0 +1,4 @@
+*.o
+*.ppu
+deadcold
+savegame/*.txt

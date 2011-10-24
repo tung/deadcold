@@ -30,96 +30,96 @@ const
 	Texman: Array [1..NumTex] of TexDesc = (
 		(	title: '06/18/64 WARNING - SIDNEY JAMES WARNER';
 			msg: 'Dr.S J Warner is wanted for questioning. CentSec has implicated him in the recent deaths of Twomas Draklor, Ed Patres and Moira Chak. Warner is a trained psycap and is thought to be carrying a weapon.';
-			clearance: 1; XPV: 15;	),
+			clearance: 1; XPV: 15; used: False;	),
 		(	title: '04/12/64 MORGAN, DESCARTES, and THANATOS users';
 			msg: 'DeadCold Central Server and Navcomp has been accessed by an intrusive alias. Please consult online documentation for more information.';
-			clearance: 7; XPV: 1;	),
+			clearance: 7; XPV: 1; used: False;	),
 		(	title: '07/05/64 !!!ABANDON SHIP!!! CS N.Balordo';
 			msg: 'Shut down Majordomo but outsider in core now. Nt much time. Pods may be corrupt. Get out. In secure room "K" deck- send res%#$ dhds v=4200 v2=16 v4=89711';
-			clearance: 30; XPV: 25;	),
+			clearance: 30; XPV: 25; used: False;	),
 		(	title: '05/25/64 Software Upgrade Delayed';
 			msg: 'The software upgrade which has been scheduled for the past few weeks has not yet been performed. There have been problems uninstalling the Sirius Intuition Interface from the Win2636 kernel.';
-			clearance: 2; XPV: 2;	),
+			clearance: 2; XPV: 2; used: False;	),
 		(	title: '05/30/64 Software Upgrade Completed';
 			msg: 'The scheduled upgrade to the station''s kernel OS has been finished. Please familiarize yourself with the new operating procedures.';
-			clearance: 4; XPV: 2;	),
+			clearance: 4; XPV: 2; used: False;	),
 
 		(	title: '05/31/64 Software Patch to be Installed';
 			msg: 'We apologize for the station-wide computer problems that users have been reporting today. CompSec is working on the problem. Thank you%443=2';
-			clearance: 5; XPV: 3;	),
+			clearance: 5; XPV: 3; used: False;	),
 		(	title: '06/11/64 Shuttle Launch Schedule';
 			msg: 'Ships to Denoles leave on Thursday, Saturday, and Tuesday at 15:00. Ships to Mascan leave on Wednesday, Friday, and Monday at the same time.';
-			clearance: 0; XPV: 1;	),
+			clearance: 0; XPV: 1; used: False;	),
 		(	title: '05/07/64 Shuttle Launch Schedule';
 			msg: 'Ships to Denoles leave on Thursday, Saturday, and Tuesday at 15:00. Ships to Mascan leave on Wednesday, Friday, and Monday at the same time.';
-			clearance: 8; XPV: 1;	),
+			clearance: 8; XPV: 1; used: False;	),
 		(	title: '06/05/64 Alien Burial Chamber on Display';
 			msg: '[AGUER] The Taltuo Collection will be on display at the museum on Deck "D" today. These items have been sent to DeadCold for catalogueing and analysis.';
-			clearance: 0; XPV: 1;	),
+			clearance: 0; XPV: 1; used: False;	),
 		(	title: '06/07/64 No More Bugs!';
 			msg: '[NBALO] This is Nick at CS 2 conf -> all bugs from OS upg have been fixed. Gentlemen, to your workstations! haha';
-			clearance: 10; XPV: 2;	),
+			clearance: 10; XPV: 2; used: False;	),
 
 		(	title: '06/08/64 Delta Patch Being Shipped';
 			msg: 'Due to recent computer failures, station management has ordered the costly "Delta Upgrade" package. It should arrive by freight transport in a week or two.';
-			clearance: 14; XPV: 2;	),
+			clearance: 14; XPV: 2; used: False;	),
 		(	title: '06/10/64 ALERT - Meningitis Outbreak';
 			msg: 'There have been several apparent cases of viral meningitis among crew members. Residents and visitors to the station are advised to have all water sources tested before use.';
-			clearance: 0; XPV: 1;	),
+			clearance: 0; XPV: 1; used: False;	),
 		(	title: '05/17/64 Welcome to our visitors from Sendai! [AGUER]';
 			msg: 'We would like to extend our hospitality to the Sendai Gravesite Society, and issue our hope that they have an interesting and educational visit.';
-			clearance: 0; XPV: 1;	),
+			clearance: 0; XPV: 1; used: False;	),
 		(	title: '07/06/64 Sorry for the Inconvenience';
 			msg: '[MD] We would like to apologize for several news bulletins recently made which were in error. There is no emergency on our station. Please report to security if you have any further concerns.';
-			clearance: 20; XPV: 30;	),
+			clearance: 20; XPV: 30; used: False;	),
 		(	title: '05/33/64 Ferryman Destroyed in Transit';
 			msg: '[TDRAK] While en route to DeadCold the shuttle craft "Ferryman" met with an accident and was lost in space. As it was an automated shuttle, no lives were lost. The 262 deceased on board are not expected to be recovered.';
-			clearance: 0; XPV: 2;	),
+			clearance: 0; XPV: 2; used: False;	),
 
 		(	title: 'ANDROS GUERO';
 			msg: 'Disrythmia: Atazine 15mg. Risk factor heart disease- reccomend more exercise.';
-			clearance: 1; XPV: 1;	),
+			clearance: 1; XPV: 1; used: False;	),
 		(	title: 'TWOMAS DRAKLOR';
 			msg: 'Deceased. Massive head trauma possibly caused by gunshot. Legs mutilated after time of death. Forensics report pending.';
-			clearance: 7; XPV: 5;	),
+			clearance: 7; XPV: 5; used: False;	),
 		(	title: 'EDWARD PATRES';
 			msg: 'Deceased. Blunt trauma over majority of body. Two incisions in lower abdomen. Forensics report pending.';
-			clearance: 3; XPV: 5;	),
+			clearance: 3; XPV: 5; used: False;	),
 		(	title: 'MOIRA CHAK';
 			msg: 'Deceased. Multiple stab wounds to body plus significant damage to head and face. Forensics report pending.';
-			clearance: 5; XPV: 5;	),
+			clearance: 5; XPV: 5; used: False;	),
 		(	title: 'NICHOLAS BALORDO';
 			msg: 'Hypertension: Nerve Relaxants 15mg. Stress: Counseling reccomended.';
-			clearance: 1; XPV: 1;	),
+			clearance: 1; XPV: 1; used: False;	),
 
 		(	title: 'SIDNEY JAMES WARNER';
 			msg: 'Arthritis in 85% of bone mass: Solenol pain medicene 8mg, Anti-inflammatory tablets 16mg. Cybernetic replacement may be only option.';
-			clearance: 10; XPV: 15;	),
+			clearance: 10; XPV: 15; used: False;	),
 		(	title: 'DAEYOUNG PARK';
 			msg: 'Ulcer, acid reflux. Stomach condition aggrevated by not following diet.';
-			clearance: 1; XPV: 1;	),
+			clearance: 1; XPV: 1; used: False;	),
 		(	title: '[NBALO:>MD] Primary Generator Failed';
 			msg: 'The primary power generator has gone down; switching emergency power to cryogenics & ordering an evacuation.';
-			clearance: 0; XPV: 5;	),
+			clearance: 0; XPV: 5; used: False;	),
 		(	title: '[TDRAK:>NBALO] Security Upgrade';
 			msg: 'Find out why our defense lasers targeted "FERRYMAN" as a hostile craft. We can''t afford for this kind of accident to happen again.';
-			Clearance: 5; XPV: 150;	),
+			Clearance: 5; XPV: 150; used: False;	),
 		(	title: '[DPARK:>CTOMS] Re:TS involved in AI?';
 			msg: 'With regards to your recent inquiries, I do not believe that this is a case where it is nessecary to presuppose the existance of spirit (or even consciousness) to find the results of the "Ventrue" experiments useful.';
-			Clearance: 1; XPV: 10;	),
+			Clearance: 1; XPV: 10; used: False;	),
 
 		(	title: '[MCHAK:>SWARN] DK17 Discrepency';
 			msg: 'RE. the missing sample of DK17, it doesn''t appear to have been transferred to our lab. Hades wouldn''t turn over sensor reports for A-Mod so I''m afraid I can''t be of any more help. Ask Twomas.';
-			Clearance: 3;	XPV: 15;	),
+			Clearance: 3;	XPV: 15; used: False;	),
 		(	title: '[SWARN:>TDRAK] Sensor Logs "A" Module';
 			msg: 'I need access to the sensor logs from JnIII to JnX. Hades claims security protocol, can''t you circumvent him?';
-			Clearance: 7; XPV: 10;		),
+			Clearance: 7; XPV: 10; used: False;		),
 		(	title: '06/05/64 Taltuo Artefacts now on display';
 			msg: 'Several of the treasures recovered from the Taltuo burial site are now on display in the main hall.';
-			Clearance: 0; XPV: 0;		),
+			Clearance: 0; XPV: 0; used: False;		),
 		(	title: '06/17/64 Museum Closed due to Infestation';
 			msg: 'A recent shipment of ancient scrolls was infested with Algolian Dust-Jellies. The museum will remain in quarantine until this problem has been dealt with.';
-			Clearance: 0; XPV: 0;		)
+			Clearance: 0; XPV: 0; used: False;		)
 	);
 
 
@@ -156,99 +156,99 @@ const
 
 	NumGKeys = 30;
 	KMap: Array [1..NumGKeys] of GKeyDesc = (
-		(	dkey: '1';
+		(	key: '1'; dkey: '1';
 			name: 'SouthWest';
 			desc: 'Movement key.';),
-		(	dkey: '2';
+		(	key: '2'; dkey: '2';
 			name: 'South';
 			desc: 'Movement key.';),
-		(	dkey: '3';
+		(	key: '3'; dkey: '3';
 			name: 'SouthEast';
 			desc: 'Movement key.';),
-		(	dkey: '4';
+		(	key: '4'; dkey: '4';
 			name: 'West';
 			desc: 'Movement key.';),
-		(	dkey: '5';
+		(	key: '5'; dkey: '5';
 			name: 'Wait';
 			desc: 'Movement key.';),
-		(	dkey: '6';
+		(	key: '6'; dkey: '6';
 			name: 'East';
 			desc: 'Movement key.';),
-		(	dkey: '7';
+		(	key: '7'; dkey: '7';
 			name: 'NorthWest';
 			desc: 'Movement key.';),
-		(	dkey: '8';
+		(	key: '8'; dkey: '8';
 			name: 'North';
 			desc: 'Movement key.';),
-		(	dkey: '9';
+		(	key: '9'; dkey: '9';
 			name: 'NorthEast';
 			desc: 'Movement key.';),
-		(	dkey: 'o';
+		(	key: 'o'; dkey: 'o';
 			name: 'OpenDoor';
 			desc: 'Open a door or service panel adjacent to the PC.';),
 
-		(	dkey: 'c';
+		(	key: 'c'; dkey: 'c';
 			name: 'CloseDoor';
 			desc: 'Close a door or service panel adjacent to the PC.';),
-		(	dkey: 'R';
+		(	key: 'R'; dkey: 'R';
 			name: 'Recenter';
 			desc: 'Recenter the display on the PC''s current position.';),
-		(	dkey: 'a';
+		(	key: 'a'; dkey: 'a';
 			name: 'Targeting';
 			desc: 'Fire the PC''s missile weapon.';),
-		(	dkey: 't';
+		(	key: 't'; dkey: 't';
 			name: 'ThrowGrenade';
 			desc: 'Throw a grenade.';),
-		(	dkey: 'i';
+		(	key: 'i'; dkey: 'i';
 			name: 'Inventory';
 			desc: 'Access items in the PC''s backpack.';),
 
-		(	dkey: 'e';
+		(	key: 'e'; dkey: 'e';
 			name: 'Equipment';
 			desc: 'Access items which the PC has equipped.';),
-		(	dkey: ',';
+		(	key: ','; dkey: ',';
 			name: 'PickUp';
 			desc: 'Pick up an item off the floor.';),
-		(	dkey: 'D';
+		(	key: 'D'; dkey: 'D';
 			name: 'DisarmTrap';
 			desc: 'Attempt to disarm a trap.';),
-		(	dkey: 's';
+		(	key: 's'; dkey: 's';
 			name: 'Search';
 			desc: 'Search for secret doors and traps.';),
-		(	dkey: 'z';
+		(	key: 'z'; dkey: 'z';
 			name: 'InvokePsi';
 			desc: 'Invoke one of the PC''s psychic powers.';),
 
-		(	dkey: 'Z';
+		(	key: 'Z'; dkey: 'Z';
 			name: 'QuickPsi';
 			desc: 'Invoke one of the PC''s psychic powers using quick key.';),
-		(	dkey: 'x';
+		(	key: 'x'; dkey: 'x';
 			name: 'CheckXP';
 			desc: 'Display the PC''s level and experience.';),
-		(	dkey: '/';
+		(	key: '/'; dkey: '/';
 			name: 'Look';
 			desc: 'Identify characters on the screen.';),
-		(	dkey: '>';
+		(	key: '>'; dkey: '>';
 			name: 'Enter';
 			desc: 'Enter transitway, or activate terrain.';),
-		(	dkey: '.';
+		(	key: '.'; dkey: '.';
 			name: 'Repeat';
 			desc: 'Perform the same command repeditively.';),
 
 
-		(	dkey: 'Q';
+		(	key: 'Q'; dkey: 'Q';
 			name: 'QuitGame';
 			desc: 'Stop playing and go do something productive.';),
-		(	dkey: '?';
+		(	key: '?'; dkey: '?';
 			name: 'Help';
 			desc: 'Display all these helpful messages.';),
-		(	dkey: 'X';
+		(	key: 'X'; dkey: 'X';
 			name: 'SaveGame';
 			desc: 'Write all game data to disk.';),
-		(	dkey: 'C';
+		(	key: 'C'; dkey: 'C';
 			name: 'CharInfo';
 			desc: 'Provide some detailed information about your character.';),
-		(	dkey: 'M';
+		(	key: 'M'; dkey: 'M';
 			name: 'HandyMap';
 			desc: 'Provides a rough map of the areas you have explored already.')
 
@@ -430,6 +430,7 @@ begin
 		write(THEline);
 
 		Dispose(THEline);
+		THEline := Nil;
 
 		linestart := linebreak;
 
@@ -561,6 +562,7 @@ begin
 
 	{Dispose of the string.}
 	Dispose(pmsg);
+	pmsg := Nil;
 end;
 
 Procedure DCAppendMessage(msg: string);
@@ -579,6 +581,7 @@ begin
 
 	{Dispose of the string.}
 	Dispose(pmsg);
+	pmsg := Nil;
 end;
 
 Procedure DCPointMessage(msg: string);
@@ -709,7 +712,11 @@ end;
 
 
 initialization
-	StartMem := MemAvail;
+	{$ifdef fpc}
+		StartMem := getfpcheapstatus.currheapused;
+	{$else}
+		StartMem := MemAvail;
+	{$endif}
 	CursorOff; {LINUX ALERT}
 	ClrScr;
 	SetKeyMap;
@@ -719,6 +726,10 @@ finalization
 	CursorOn;
 	ClrScr;
 	writeln('Start Mem: ',StartMem);
-	writeln('Currently: ',MemAvail);
+	{$ifdef fpc}
+		writeln('Currently: ',getfpcheapstatus.currheapused);
+	{$else}
+		writeln('Currently: ',MemAvail);
+	{$endif}
 	writeln('If the above two numbers are different, I''ve done something bad.');
 end.

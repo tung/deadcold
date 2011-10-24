@@ -298,6 +298,7 @@ begin
 
 	{Dispose of the actual map.}
 	Dispose(gb);
+	gb := Nil;
 end;
 
 Function OnTheMap(X,Y: Integer): Boolean;
