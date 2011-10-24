@@ -1,0 +1,137 @@
+===================================
+***  PLOTLINE SCRIPT REFERENCE  ***
+===================================
+
+0.CONVENTIONS
+
+	The DeadCold plotline script language was derived from the
+	GearHead scripting language, which was itself derived from
+	the original version of the DeadCold language. Unless otherwise
+	noted, all conventions from GH apply here.
+
+	In the listings, parameters are listed in square brackets: []
+	Optional parts are listed in greater than/less than brackets: <>
+	Spacing is important. If no spaces are indicated here, no
+	spaces should appear in the script. Commands should be separated
+	from one another by spaces unless otherwise noted.
+
+	If a trigger has more than one parameter, the parameters are
+	separated by a % sign.
+
+1.TRIGGERS
+
+	10MIN
+	This trigger is set once every 10 minutes. Note that it supercedes
+	the MINUTE trigger, and is itself superceded by the HOUR trigger.
+
+	ALARM
+	This trigger is generated when an alarm trap is set off or
+	when a computer hacking attempt fails.
+
+	EN[ terrain type ]
+	This trigger is generated when the player uses the "activate
+	terrain" command (>).
+
+	{ INTERNAL JUMP }
+	GOTO[ label ]
+	This trigger is used to create a line of script which may not
+	be directly triggered by game events, but which may be called
+	by an ELSE or a GOTO command.
+
+	HOUR
+	This trigger is generated once per hour by the game. It supercedes
+	all other time triggers.
+
+	MINUTE
+	This trigger is generated once every minute by the game.
+
+	MS[ code ]
+	This trigger is generated when the player moves onto a map
+	tile whose SPECIAL field is nonzero. The code is the SPECIAL
+	value for this square.
+
+	NC[ code ]
+	This trigger is generated when the player sees a new monster
+	for the first time. The code is the type of monster seen.
+
+	START
+	This trigger is generated when a new level is entered.
+
+2.COMMANDS
+
+	ALERT [critter gfx]
+	This command causes all critters whose graphic is the specified
+	character to immediately target the PC. Critter gfx is case sensitive.
+	WARNING: If the type provided is a very common critter, use of
+	this command may slow down the game considerably.
+
+	CHANGETERR [terrain to change] [change to this]
+	This command changes Terr1 to Terr2 over the entire map.
+
+	CHOKE
+	This command will cause the PC to take 2d5 asphyxiation damage.
+
+	GOLEFT
+	GORIGHT
+	These commands are invoked when the player enters a transitway
+	tube. They bring the player to the next logical module.
+
+	IF= [value1] [value2] <ELSE [label]>
+	If value1 = value2, continue on with this line. If not,
+	jump to LABEL. The LABEL must be formatted as the trigger of
+	the line to use next.
+
+	IFG [value1] [value2] <ELSE [label]>
+	If value1 > value2, continue on with this line. If not,
+	jump to LABEL. The LABEL must be formatted as the trigger of
+	the line to use next. Note that > can't be used as the greater
+	than symbol since it's the end marker for the line... bummer.
+
+	IFKEY [item number] <ELSE [label]>
+	If the player has the specified key item, continue on with
+	this line. Otherwise jump to LABEL.
+
+	IFYN [prompt message] <ELSE [label]>
+	Print a Yes/No prompt for the user. If the player selects "Y",
+	continue on with this line. If "N", goto the ELSE line.
+
+	PRINT [label]
+	This command will print a message in the dialog area.
+
+	V= [idnum] [value]
+	This command may be used to assign the value of variable IDNUM.
+
+	V+ [idnum] [value]
+	This command may be used to add a quantity to the current value
+	of variable IDNUM.
+
+
+3.MISCELLANEOUS
+
+	MSG[label] <[Text Message Here.]>
+	Game messages are stored as string attributes in the same place
+	as the events.
+
+	P[ Identifier ]
+	This variable may be used to access a play value. The defined play
+	values are as follows:
+		L	->	Leakage; how many PC armor parts aren't sealed
+
+	V[ code ]
+	Variables may be assigned by the script. Use this to dereference
+	the value stored in a variable.
+
+4.ASSIGNED VARIABLES
+
+	The following variable numbers have been assigned in the DeadCold
+	campaign.
+	1.Intro message: Leave ship / Leave Hangar / Stupid Joke
+	2.Module "B" Life Support Off / On
+	3.Modume "B" Air Depletion - Player starts taking damage around 1000
+	4.Module "D" Alert Status
+
+5.ASSIGNED MAP SQUARES
+
+	RELIQUARY: 3,4,5 (door plaques)
+	MODULE "C": 1,2
+

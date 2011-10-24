@@ -1,0 +1,193 @@
+2002/02/16
+- Added new level, Module "D" - Theistic Services (plotline.pp)
+- Added new commands to plotline: CHANGETERR, IFYN (plotline.pp)
+- Fixed bug with conditions on statline (statusfx.pp, thanks Igor Savin)
+- Asphyxiation now causes [more] prompt (plotline.pp)
+- Random monsters partially determined by station level (charts.pp)
+- Fixed names for non-grenadelike grenades (dcitems.pp)
+- Added breeding monsters (cbrain.pp,critters.pp)
+- Load Game menu now sorts the names alphabetically (dcplay.pp)
+
+2002/02/14a
+- Fixed bug with MPU displaying overlength lines (mdlogon.pp)
+- Travel restricted to "stocked" levels B and C (plotline.pp)
+- New item type "Electronics" (dcitems.pp)
+- Time triggers "START","MINUTE","10MIN","HOUR" added (dcplay.pp)
+- Many new commands in plotline script (plotline.pp)
+- Added HandyMap function & item (backpack.pp)
+- All items should now have descriptions (dcitems.pp)
+- Fixed a problem alerting dead crew members to the PC's presence (plotline.pp)
+- Fixed empty equipment slot bug (pcaction.pp, thanks Michael Blackney)
+- Reworked the way the random map generator stores level plans (randmaps.pp)
+- Transitway doors are now working (randmaps.pp,plotline.pp)
+- Save file version updated to 1010, older ones still good (gamebook.pp)
+- Frozen levels added to save file (gamebook.pp)
+- Added many new rooms (RandMaps.pp)
+- Psi Force made more dependant on level than Willpower (dcchars.pp)
+- Certain psi power costs have been increased (spells.pp)
+
+2001/11/30
+- Added Medical Unit computer type (mdlogon.pp,cwords.pp)
+- Former crew members will not set off traps (cbrain.pp)
+- Added Medical Center & Reliquary (RandMaps.pp)
+- Updated items and spells for new status effects (dcitems.pp,spells.pp)
+- Backwards compatability restored... hopefully (gamebook.pp)
+- Monster Memory now stored in SC^.NA (gamebook.pp)
+- Reworked the nature of status changes (nearly all units were affected)
+- Rewrote StatusFX, using the better NAtt routines (statusfx.pp)
+- Rewrote RemoveModel. First model bug should be fixed (texmodel.pp)
+
+2001/11/28
+- Savefile FUBAR found- previous versions currently incompatable; will fix soon
+- Finally added PCInfo command- but it ain't pretty (pcaction.pp)
+- Fixed another crash when canceling character creation (gamebook.pp)
+- Bug detected when first model in list is deleted (texmaps or texmodel?)
+- Added DamageCap control to cfg (rpgtext.pp,dccombat.pp - for DC)
+- Equipped items may now be identified (pcaction.pp)
+- Security rooms more rewarding + dangerous (RandMaps.pp)
+- Regeneration & restoration rates now set by HPMax, MPMax (dcchars.pp - thanks DC)
+- Computers can now crash, set off alarms (mdlogon.pp)
+- Added psi power descriptions (spells.pp,RandChar.pp,zapspell.pp)
+- Fixed "magic map" bug (zapspell.pp)
+- Some new equipment (dcitems.pp)
+- More tweaks to the starting equipment generator (RandChar.pp)
+- The Samurai got his katana back (RandChar.pp)
+- Fixed bug with rereading terminal messages (dcplay.pp)
+
+2001/11/18
+- Redefined dir keys should now work (rpgtext.pp,pcaction.pp - thanks Kay)
+- Fixed crash when canceling character creation (gamebook.pp - thanks Kay)
+
+2001/11/17
+- Savefile deleted when PC dies, unless SafeMode is on (dcplay.pp)
+- Quitting the game also saves it (dcplay.pp)
+- Added Identify skill (dcchars.pp)
+- Fixed spontaneous quitting bug (dcplay.pp)
+- Completely rewrote the starting equipment routine (RandChar.pp)
+- Added "Attribute Boost" status (statusfx.pp)
+- Regeneration has been made more effective (dcplay.pp)
+- Added numeric attributes to save file (gamebook.pp)
+- Lowered the amount of damage done by some traps (dccombat.pp)
+- Fixed another bug where resting prints "blocked" (pcaction.pp)
+- Added NumMonsters, SwarmRate, and MonsterTime controls to cfg (rpgtext.pp)
+- Replaced old PlotLine code with shiny new GearHead code (plotbase.pp,plotline.pp)
+
+2001/11/13
+- Computers added and functioning (mdlogon.pp)
+- Fixed a memory leak when learning new spells (RandChar.pp)
+- Played around with game balance (charts.pp,gamebook.pp)
+- Expanded monster generator (charts.pp)
+- Logon data in save file (gamebook.pp)
+- Computers in save file (gamebook.pp)
+- Reworked startup code & main unit organization (deadcold.pas,dcplay.pp)
+- Added "BuildFileMenu" and "SelectFile" procedures (rpgmenus.pp)
+- Character generator now gets character name (RandChar.pp)
+- At startup, checks for existance of SaveGame dir (deadcold.pp)
+- Moved around the traps (RandMaps.pp)
+- Cleaned up vision blind spots (texmaps.pp - thanks to Daniel Cormier)
+- Mushrooms no longer have infinite missile range (cbrain.pp)
+- PCStatLine should now display correct conditions (gamebook.pp)
+- Added "Can't Move!" message for paralysis (deadcold.pp)
+
+2001/09/20
+- Status changes will be shown while in BackPack screen (backpack.pp)
+- SelectItem menu now displays item descriptions (backpack.pp - thanks Simon Byderue)
+- Items now need to be identified (charts.pp,dcitems.pp)
+- Added hidden supplies to map generator (RandMaps.pp)
+- May have a range check error in texmaps.pp, may be fixed now (texmaps.pp)
+- Status line now shows hungriness and starvation (gamebook.pp)
+- Creature LineAttack description now okay (dccombat.pp - thanks Static Chaos)
+- The PC doesn't regenerate while poisoned (deadcold.pas)
+- Traps and poison are even more dangerous than before (dccombat.pp)
+- Monsters now only fire at targets within their vision range (cbrain.pp)
+- Fixed "Walking Fire" bug in creature attack routine (cbrain.pp)
+- Adjusted skill advancement (dcchars.pp)
+- Repeat moving PC will stop for items and traps (pcaction.pp)
+- PC can't eat more food if already full (backpack.pp)
+- Walking over items reveals quantity present (pcaction.pp)
+- Cure Poison spell now cures poison, not sleep (spells.pp - thanks DC)
+
+2001/09/15
+- Adjusted experience requirements (gamebook.pp)
+- Spike Mushrooms should stop firing at walls (cbrain.pp)
+- All characters now start with similar stat points (RandChar.pp)
+- Adjusted starting values for character skills (RandChar.pp)
+- Traps are a bit more dangerous (dccombat.pp)
+- Characters will now start with more ammo than before (RandChar.pp)
+- Yet another memory leak has been fixed (backpack.pp)
+- Fixed bug in random item generator (charts.pp - thanks again to Daniel Cormier)
+- Fixed bug where resting would print multiple "blocked" messages (pcaction.pp)
+- Added AnimSpeed command for cfg file (texutil.pp)
+- Did some more fiddling around with creature stats (critters.pp)
+- Added some code to hopefully catch future nameless items... (dcitems.pp)
+- Repaired serious bug in save files (statusfx.pp - thanks Static Chaos)
+
+2001/09/13
+- Fixed double bug in the Disarm Traps procedure (pcaction.pp - thanks Daniel Cormier)
+- Fixed another %#@!@#$ memory leak (libram.pp)
+
+2001/09/09
+- Compiled game with debug options on; runtime errors should generate useful info
+- Changed name of main program to DeadCold - it's no longer just a test
+- Fixed memory leak in Help function
+- Added clouds list, version info to save file
+- When shooting, autotarget only selects critter models (looker.pp)
+- Played around with monster HPs a bit (critters.pp)
+- Modified texmaps.pp to hopefully accomodate smokescreens and force fields...
+- Models now have individual obscurement values, by default = 1 (texmodel.pp)
+- Certain models may completely block LOS in the same way as walls (texmaps.pp)
+
+2001/04/24
+- Added support for clouds and computers, though no instances of either yet
+- Added stat drain condition (statusfx.pp)
+- Cleaned up initialization / finalization in rpgtext.pp, and added memory indicator
+- Added cheat keys for debugging purposes- try !, @, #
+- Actually activated the end-of-game cleanup routines
+- Added some error checking code to charts.pp, critters.pp, dcitems.pp
+- Fixed bug involving critter immunities
+
+2001/04/07
+- Modified targeting routines (looker.pp)
+- Rewrote help routine (maptest.pas)
+- Critters only drop random treasure when slain by PC (dccombat.pp)
+- Added configuration file support. There are no safeguards yet!!!
+- Added "CureStatus" spell type
+- Psi power may fail if not enough MP (zapspell.pp)
+- Adjusted spell lists (spells.pp)
+- Adjusted skill advancement for PsiForce, DisarmTrap
+- Adjusted AlertOthers procedure. Maybe this time...
+- Random monsters now get harder as the PC advances in level
+- Added close combat modifiers for missile weapons
+- Fixed blastattack bug - missed shots won't pass through walls
+- Added "Book" item type
+
+2001/03/22
+- Added libram unit
+- Added "Throw Grenade" command
+- Added grenades
+- Added "Blast Radius" attack attribute
+- Savefile Compression! (Ross Morgan-Linial's algorithm)
+
+2001/03/17
+- Fixed message when critter fires LineAttack weapon
+- Fixed bug in AlertOthers procedure. It should now work. (dccombat.pp)
+- Added "Slaying", "Armor Doubling" attack attributes
+- Fixed bug in RemoveModel procedure (texmodel.pp)
+- Added special ammo types
+- Added State and ID fields to dcitem record
+- Fixed bug in targeting routines (looker.pp)
+- Added XP Check command
+- Added item descriptions (incomplete)
+
+2001/03/12
+- Reorganized the Treasure Type charts
+- Added "Nope" message to PickUp command
+- Added Repeat command - supports Movement and Searching
+- Added Repeat Stop whenever PC is damaged
+- Added Repeat Stop when PC sees hostile critter
+- Added Repeat Stop when a secret door or trap is discovered
+- Resting (move 5) restores Health and Mojo faster than walking
+- Added Repeat Stop whenever plot script is triggered
+- Added Repeat Stop when critters first come into view
+- Modified PCStatLine - Status changes are now displayed
+
