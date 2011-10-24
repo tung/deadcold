@@ -15,18 +15,18 @@ const
 	NAG_MonsterMemory = 1;
 
 Type
-	SAttPtr = ^SAtt;
 	SAtt = Record		{*** STRING ATTRIBUTE ***}
 		info: String;
-		next: SAttPtr;
+		next: ^SAtt;
 	end;
+	SAttPtr = ^SAtt;
 
-	NAttPtr = ^NAtt;
 	NAtt = Record		{*** NUMERICAL ATTRIBUTE ***}
 		G,S: Integer;		{General, Specific, Value}
 		V: LongInt;
-		next: NAttPtr;
+		next: ^NAtt;
 	end;
+	NAttPtr = ^NAtt;
 
 
 Function CreateSAtt(var LList: SAttPtr): SAttPtr;
@@ -115,14 +115,12 @@ begin
 		{i.e. it's the first one in the list.}
 		LList := B^.Next;
 		Dispose(B);
-		B := Nil;
 		end
 	else begin
 		{We found the attribute we want to delete and have another}
 		{one standing before it in line. Go to work.}
 		A^.next := B^.next;
 		Dispose(B);
-		B := Nil;
 	end;
 end;
 
@@ -267,14 +265,12 @@ begin
 		{i.e. it's the first one in the list.}
 		LList := B^.Next;
 		Dispose(B);
-		B := Nil;
 		end
 	else begin
 		{We found the attribute we want to delete and have another}
 		{one standing before it in line. Go to work.}
 		A^.next := B^.next;
 		Dispose(B);
-		B := Nil;
 	end;
 end;
 

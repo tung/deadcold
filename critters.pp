@@ -410,7 +410,6 @@ Const
 	MKIND_Critter = 2;
 
 Type
-	critterptr = ^critter;
 	critter = Record
 		crit: Integer;		{Defines what kind of a creature we're dealing with.}
 		HP: Integer;		{Current hit points.}
@@ -424,11 +423,12 @@ Type
 
 		Target: ModelPtr;	{This is the model the critter is gunning for.}
 		M: ModelPtr;		{The critter's model.}
-		Next: critterptr;		{So we can do a linked list.}
+		Next: ^Critter;		{So we can do a linked list.}
 	end;
+	critterptr = ^critter;
 
 Function LastCritter(CP: CritterPtr): CritterPtr;
-Function AddCritter(var CList: CritterPtr; gb: GameBoardPtr; c,X,Y: Integer): CritterPtr;
+Function AddCritter(var CList: CritterPtr; gb: GameBoardPtr; crit,X,Y: Integer): CritterPtr;
 Procedure DisposeCritterList(CP: CritterPtr);
 Procedure RemoveCritter(CP: CritterPtr; var CList: CritterPtr; gb: GameBoardPtr);
 Function LocateCritter(MP: ModelPtr; CList: CritterPtr): CritterPtr;
@@ -487,7 +487,6 @@ begin
 	{of the critter altogether.}
 	if it^.m = Nil then begin
 		Dispose(it);
-		it := Nil;
 		Exit(Nil);
 	end;
 
@@ -539,7 +538,6 @@ begin
 
 	{Get rid of the critter record}
 	Dispose(C);
-	C := Nil;
 end;
 
 Procedure RemoveCritter(CP: CritterPtr; var CList: CritterPtr; gb: GameBoardPtr);

@@ -7,15 +7,15 @@ interface
 uses crt,texutil,TexModel,TexMaps,statusfx,spells;
 
 Type
-	dcitemptr = ^dcitem;
 	dcitem = Record
 		ikind: Integer;		{Type of item.}
 		icode: Integer;		{Specific kind.}
 		state: Integer;		{The state of the item.}
 		charge: Integer;	{This field tells how many shots/uses a device has left.}
 		ID: Boolean;		{Whether or not the item has been identified.}
-		next: dcitemptr;
+		next: ^dcitem;
 	end;
+	dcitemptr = ^dcitem;
 
 	IGrid = Array [1..Xmax,1..YMax] of dcitemptr;
 	IGridPtr = ^IGrid;
@@ -275,59 +275,47 @@ Const
 	NumFood = 39;
 	NumFSpell = 12;
 	FSpellMan: Array [1..NumFSpell] of SpellDesc = (
-		(	name: ''; cdesc: '';
-			eff: EFF_Healing;
-			Step: 12; P1: 0; P2: 0; cost: 0;
-			C: LightGreen; ATT: ''; desc: ''			),
-		(	name: ''; cdesc: '';
-			eff: EFF_Residual;
-			Step: SEF_Regeneration; P1: 9; P2: 0; cost: 0;
-			C: LightGreen; ATT: ''; desc: ''			),
-		(	name: ''; cdesc: '';
-			eff: EFF_Residual;
-			Step: SEF_VisionBonus; P1: 6; P2: 0; cost: 0;
-			C: Yellow; ATT: ''; desc: ''			),
-		(	name: ''; cdesc: '';
-			eff: EFF_Residual;
-			Step: SEF_Poison; P1: 5; P2: 0; cost: 0;
-			C: Yellow; ATT: ''; desc: ''			),
-		(	name: ''; cdesc: '';
-			eff: EFF_CureStatus;
-			Step: SEF_Poison; P1: 0; P2: 0; cost: 0;
-			C: Yellow; ATT: ''; desc: ''			),
+		(	eff: EFF_Healing;
+			Step: 12;
+			C: LightGreen; ATT: ''			),
+		(	eff: EFF_Residual;
+			Step: SEF_Regeneration; P1: 9;
+			C: LightGreen; ATT: ''			),
+		(	eff: EFF_Residual;
+			Step: SEF_VisionBonus; P1: 6;
+			C: Yellow; ATT: ''			),
+		(	eff: EFF_Residual;
+			Step: SEF_Poison; P1: 5;
+			C: Yellow; ATT: ''			),
+		(	eff: EFF_CureStatus;
+			Step: SEF_Poison;
+			C: Yellow; ATT: ''			),
 
-		(	name: ''; cdesc: '';
-			eff: EFF_Residual;
-			Step: SEF_Paralysis; P1: 3; P2: 0; cost: 0;
-			C: Magenta; ATT: ''; desc: ''			),
-		(	name: ''; cdesc: '';
-			eff: EFF_Residual;
-			Step: SEF_Sleep; P1: 5; P2: 0; cost: 0;
-			C: White; ATT: ''; desc: ''			),
-		(	name: ''; cdesc: '';
-			eff: EFF_Residual;
-			Step: -6; P1: 36; P2: 0; cost: 0;
-			C: White; ATT: ''; desc: ''			),
+		(	eff: EFF_Residual;
+			Step: SEF_Paralysis; P1: 3;
+			C: Magenta; ATT: ''			),
+		(	eff: EFF_Residual;
+			Step: SEF_Sleep; P1: 5;
+			C: White; ATT: ''			),
+		(	eff: EFF_Residual;
+			Step: -6; P1: 36;
+			C: White; ATT: ''			),
 		{ Effect 9 - Boost Dexterity }
-		(	name: ''; cdesc: '';
-			eff: EFF_Residual;
-			Step: SEF_BoostBase + 4; P1: 10; P2: 0; cost: 0;
-			C: LightGreen; ATT: ''; desc: ''			),
-		(	name: ''; cdesc: '';
-			eff: EFF_Residual;
-			Step: SEF_SpeedBonus; P1: 7; P2: 0; cost: 0;
-			C: LightGreen; ATT: ''; desc: ''			),
+		(	eff: EFF_Residual;
+			Step: SEF_BoostBase + 4; P1: 10;
+			C: LightGreen; ATT: ''			),
+		(	eff: EFF_Residual;
+			Step: SEF_SpeedBonus; P1: 7;
+			C: LightGreen; ATT: ''			),
 
 		{ Effect 11 - Boost Strength }
-		(	name: ''; cdesc: '';
-			eff: EFF_Residual;
-			Step: SEF_BoostBase + 1; P1: 25; P2: 0; cost: 0;
-			C: LightGreen; ATT: ''; desc: ''			),
+		(	eff: EFF_Residual;
+			Step: SEF_BoostBase + 1; P1: 25;
+			C: LightGreen; ATT: ''			),
 		{ Effect 11 - Boost Speed }
-		(	name: ''; cdesc: '';
-			eff: EFF_Residual;
-			Step: SEF_BoostBase + 3; P1: 9; P2: 0; cost: 0;
-			C: LightGreen; ATT: ''; desc: ''			)
+		(	eff: EFF_Residual;
+			Step: SEF_BoostBase + 3; P1: 9;
+			C: LightGreen; ATT: ''			)
 	);
 	FKName: Array [1..2] of string = (
 		'Rations','Pill'
@@ -883,14 +871,12 @@ begin
 		{i.e. it's the first one in the list.}
 		LList := B^.Next;
 		Dispose(B);
-		B := Nil;
 		end
 	else begin
 		{We found the attribute we want to delete and have another}
 		{one standing before it in line. Go to work.}
 		A^.next := B^.next;
 		Dispose(B);
-		B := Nil;
 	end;
 end;
 
@@ -994,7 +980,6 @@ begin
 				if IG^[X,Y] <> Nil then
 					DisposeItemList(IG^[X,Y]);
 		Dispose(IG);
-		IG := Nil;
 	end;
 end;
 

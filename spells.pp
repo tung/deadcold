@@ -7,13 +7,12 @@ interface
 uses crt,statusfx;
 
 Type
-	SpellMemPtr = ^SpellMem;
 	SpellMem = Record	{Spell Memory - spell learned by PC}
 		code: Integer;		{Spell #}
 		mnem: Char;		{QuickSpell character}
-		next: SpellMemPtr;
+		next: ^SpellMem;
 	end;
-	SpellDescPtr = ^SpellDesc;	{Used for calling procedures.}
+	SpellMemPtr = ^SpellMem;
 	SpellDesc = Record	{Spell Description}
 		name: String;
 		cdesc: String;		{description when cast}
@@ -25,6 +24,7 @@ Type
 		ATT: String;		{Spell attributes}
 		Desc: PChar;		{ Description for menus. }
 	end;
+	SpellDescPtr = ^SpellDesc;	{Used for calling procedures.}
 
 Const
 	{These constants describe various Attack Attributes.}
@@ -91,71 +91,62 @@ Const
 		(	Name: 'Implosion';
 			cdesc: 'shread';
 			eff: EFF_CloseAttack;
-			Step: 12; P1: 3; P2: 0; cost: 2;
+			Step: 12; P1: 3; cost: 2;
 			C: LightCyan; ATT: '';
 			desc: 'Time-space is slightly pinched at the location of the target, resulting in horrible damage to its physical form.'),
 		(	Name: 'Alter Perception';
-			cdesc: '';
 			eff: EFF_Residual;
 			Step: SEF_VisionBonus; P1: 5; P2: 10; cost: 4;
 			C: Yellow; ATT: '';
 			desc: 'Use of this talent allows the character an extended visual range for about ten minutes.'),
 		(	Name: 'Heal Wounds';
-			cdesc: '';
 			eff: EFF_Healing;
-			Step: 5; P1: 0; P2: 0; cost: 2;
+			Step: 5; cost: 2;
 			C: LightGreen; ATT: '';
 			desc: 'Physical injuries may be mended by this talent.'),
 
 		{ 6 - 10 }
 		(	Name: 'Remote Viewing';
-			cdesc: '';
 			eff: EFF_MagicMap;
 			Step: 25; P1: 32; P2: 100; cost: 8;
 			C: White; ATT: '';
 			desc: 'Distant spaces may become known through this talent.'),
 		(	Name: 'Armor Up';
-			cdesc: '';
 			eff: EFF_Residual;
-			Step: SEF_ArmorBonus; P1: 5; P2: 0; cost: 3;
+			Step: SEF_ArmorBonus; P1: 5; cost: 3;
 			C: Blue; ATT: '';
 			desc: 'The armor of the character will be telekinetically strengthened for about a half an hour.'),
 		(	Name: 'Power Up';
-			cdesc: '';
 			eff: EFF_Residual;
-			Step: SEF_CCDmgBonus; P1: 10; P2: 0; cost: 2;
+			Step: SEF_CCDmgBonus; P1: 10; cost: 2;
 			C: Red; ATT: '';
 			desc: 'For ten minutes the character''s close combat attacks will do much more damage.'),
 		(	Name: 'Regenerate';
-			cdesc: '';
 			eff: EFF_Residual;
-			Step: SEF_Regeneration; P1: 15; P2: 0; cost: 10;
+			Step: SEF_Regeneration; P1: 15; cost: 10;
 			C: Green; ATT: '';
 			desc: 'Psi energy is converted over time into life energy, speeding up the healing process.' ),
 		(	Name: 'Speed Up';
-			cdesc: '';
 			eff: EFF_Residual;
-			Step: SEF_SpeedBonus; P1: 10; P2: 0; cost: 6;
+			Step: SEF_SpeedBonus; P1: 10; cost: 6;
 			C: Blue; ATT: '';
 			desc: 'For ten minutes the character will move faster.'),
 
 		{ 11 - 15 }
 		(	Name: 'Obscure Aura';
-			cdesc: '';
 			eff: EFF_Residual;
-			Step: SEF_StealthBonus; P1: 10; P2: 0; cost: 5;
+			Step: SEF_StealthBonus; P1: 10; cost: 5;
 			C: Blue; ATT: '';
 			desc: 'It becomes far more difficult for enemies to spot the character. Lasts thirty minutes.' ),
 		(	Name: 'Shockwave';
-			cdesc: 'call forth a bolt of lightning';
+			cdesc: 'call forth a bolt of lightening';
 			eff: EFF_ShootAttack;
 			Step: 3; P1: 1; P2: 8; cost: 7;
 			C: Yellow; ATT: AA_LineAttack + AA_ElemLit;
 			desc: 'A bolt of lightening strikes all foes within 8m.'),
 		(	Name: 'Guided Fire';
-			cdesc: '';
 			eff: EFF_Residual;
-			Step: SEF_MslBonus; P1: 10; P2: 0; cost: 3;
+			Step: SEF_MslBonus; P1: 10; cost: 3;
 			C: LightCyan; ATT: '';
 			desc: 'All missile attacks are much more likely to hit for one minute.'),
 		(	Name: 'Cryoblast';
@@ -167,13 +158,12 @@ Const
 		(	Name: 'Soul Hammer';
 			cdesc: 'blast';
 			eff: EFF_CloseAttack;
-			Step: 15; P1: 0; P2: 0; cost: 3;
+			Step: 15; P1: 0; cost: 3;
 			C: LightCyan; ATT: AA_ElemHoly;
 			desc: 'One nearby foe is struck with a bolt of pure spiritual energy.' ),
 
 		{ 16 - 20 }
 		(	Name: 'Sleep';
-			cdesc: '';
 			eff: EFF_StatAttack;
 			Step: SEF_Sleep; P1: 3; P2: 0; cost: 8;
 			C: LightGray; ATT: AA_Value+'05';
@@ -191,10 +181,9 @@ Const
 			C: LightCyan; ATT: AA_LineAttack + AA_SlayUndead + AA_ElemHoly;
 			desc: 'A column of unleashed spiritual energy blasts every foe within 12m.'	),
 		(	Name: 'Cure Poison';
-			cdesc: '';
 			eff: EFF_CureStatus;
-			Step: SEF_Poison; P1: 0; P2: 0; cost: 10;
-			C: LightGreen; ATT: '';
+			Step: SEF_Poison; cost: 10;
+			C: LightGreen;
 			desc: 'The poison status effect may be cured.' ),
 		(	Name: 'Theta Bolt';
 			cdesc: 'project mental energy towards';
@@ -205,7 +194,6 @@ Const
 
 		{ 21 - 25 }
 		(	Name: 'Stasis';
-			cdesc: '';
 			eff: EFF_StatAttack;
 			Step: SEF_Paralysis; P1: 1; P2: 0; cost: 12;
 			C: LightMagenta; ATT: AA_Value+'02';
@@ -217,17 +205,15 @@ Const
 			C: LightRed; ATT: AA_BlastAttack + '01' + AA_ElemFire;
 			desc: 'This powerful pyrokinetic attack affects all foes within one and a half meters of its detonation point.' ),
 		(	Name: 'Warp Gate';
-			cdesc: '';
 			eff: EFF_Teleport;
-			Step: 30; P1: 0; P2: 0; cost: 7;
-			C: LightGreen; ATT: '';
+			Step: 30; P1: 0; cost: 7;
+			C: LightGreen;
 			desc: 'The character can make a short jump through transreal space to a nearby random location.' ),
 		(	Name: 'Sense Aura';
-			cdesc: '';
 			eff: EFF_SenseAura;
 			{ NOTE - Manually pasting in MKIND_Critter here.}
-			Step: 2; P1: 0; P2: 0; cost: 4;
-			C: LightGreen; ATT: '';
+			Step: 2; cost: 4;
+			C: LightGreen;
 			desc: 'The character will for a moment sense the presence of all other beings in the vicinity.' ),
 		(	Name: 'Etherial Mist';
 			cdesc: 'call forth mysterious clouds';
@@ -425,14 +411,12 @@ begin
 		{i.e. it's the first one in the list.}
 		LList := B^.Next;
 		Dispose(B);
-		B := Nil;
 		end
 	else begin
 		{We found the attribute we want to delete and have another}
 		{one standing before it in line. Go to work.}
 		A^.next := B^.next;
 		Dispose(B);
-		B := Nil;
 	end;
 end;
 

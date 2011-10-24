@@ -217,7 +217,6 @@ begin
 	DisposeNAtt(PC^.SF);
 	DisposeSpellMem(PC^.Spell);
 	Dispose(PC);
-	PC := Nil;
 end;
 
 Function CStat(PC: DCCharPtr; Stat: Integer): Integer;
