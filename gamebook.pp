@@ -142,6 +142,7 @@ begin
 	end;
 
 	Dispose(SC);
+	SC := Nil;
 end;
 
 
@@ -353,7 +354,11 @@ var
 	T: Integer;
 begin
 	{Open the file.}
-	Assign(F,'savegame\' + SC^.PC^.Name + '.txt');
+	{$ifdef WINDOWS}
+		Assign(F,'savegame\' + SC^.PC^.Name + '.txt');
+	{$else}
+		Assign(F,'savegame/' + SC^.PC^.Name + '.txt');
+	{$endif}
 	ReWrite(F);
 		{Write the savefile version first of all.}
 		writeln(F,SaveFileVersion);

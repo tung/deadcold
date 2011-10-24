@@ -15,29 +15,29 @@ const
 	RPMNoCleanup = 2; {If you want the menu left on the screen after we've finished, use this.}
 
 type
+	RPGMenuKeyPtr = ^RPGMenuKey;
 	RPGMenuKey = Record
 		k: Char;
 		value: integer;		{The value returned when this key is pressed.}
-		next: ^RPGMenuKey;
+		next: RPGMenuKeyPtr;
 	end;
-	RPGMenuKeyPtr = ^RPGMenuKey;
 
+	RPGMenuItemPtr = ^RPGMenuItem;
 	RPGMenuItem = Record
 		msg: string;		{The text which appears in the menu}
 		value: integer;		{A value, returned by SelectMenu. -1 is reserved for Cancel}
 		desc: pchar;		{Pointer to the item description. If Nil, no desc.}
-		next: ^RPGMenuItem;
+		next: RPGMenuItemPtr;
 	end;
+	RPGMenuPtr = ^RPGMenu;
 	RPGMenu = Record
 		active: boolean;
 		bordercolor,itemcolor,selcolor,x1,y1,x2,y2: byte;
 		dborcolor,dtexcolor,dx1,dy1,dx2,dy2: byte; {fields relating to the optional description box.}
 		topitem,selectitem,numitem: integer; {fields holding info about the status of the menu.}
-		FirstItem: ^RPGMenuItem;
+		FirstItem: RPGMenuItemPtr;
 		FirstKey: RPGMenuKeyPtr;
 	end;
-	RPGMenuItemPtr = ^RPGMenuItem;
-	RPGMenuPtr = ^RPGMenu;
 
 Procedure AddRPGMenuItem(var RPM: RPGMenuPtr; msg: string; value: integer; desc: pchar);
 Procedure AddRPGMenuItem(var RPM: RPGMenuPtr; msg: string; value: integer);
@@ -192,6 +192,7 @@ begin
 	c := RPM^.FirstKey;
 	{... then get rid of the menu record.}
 	Dispose(RPM);
+	RPM := Nil;
 
 	{Keep processing the menu items until we hit a Nil nextitem.}
 	while a <> Nil do begin

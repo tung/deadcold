@@ -680,6 +680,7 @@ begin
 	StrPCopy(pmsg,PC^.BGOrigin);
 	Delineate(pmsg,X2-X1-1,1);
 	Dispose(pmsg);
+	pmsg := Nil;
 	if WhereX <> 1 then writeln;
 	writeln;
 
@@ -687,6 +688,7 @@ begin
 	StrPCopy(pmsg,PC^.BGArrival);
 	Delineate(pmsg,X2-X1-1,1);
 	Dispose(pmsg);
+	pmsg := Nil;
 	if WhereX <> 1 then writeln;
 	writeln;
 	Delineate(Ar2,X2-X1-1,1);
@@ -825,7 +827,10 @@ begin
 	end;
 
 	{If the player selected cancel, dispose of the PC record.}
-	if pc^.job = 0 then Dispose(pc)
+	if pc^.job = 0 then begin
+		Dispose(pc);
+		pc := Nil;
+		end
 	else begin
 		{Copy skill ranks}
 		for t := 1 to NumSkill do begin

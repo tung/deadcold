@@ -8,13 +8,13 @@ Const
 	SceneSize = 12;
 
 Type
+	RoomPtr = ^Room;
 	Room = Record	{This is the description for one room.}
 		Style: Integer;
 		X,Y,W,H: Integer;	{X,Y,Width,Height}
 		Floor,Wall: Integer;	{What terr type should be used for the floor and the wall.}
-		Next: ^Room;
+		Next: RoomPtr;
 	end;
-	RoomPtr = ^Room;
 	RStyle = Record	{This describes a type of room}
 		Name: String;
 		Floor,Wall: Integer;
