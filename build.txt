@@ -1,0 +1,8 @@
+BUILDING DEADCOLD FROM SOURCE
+
+	To build DeadCold from source, first get Free Pascal. On Ubuntu Linux,
+	you can do this with 'sudo apt-get install fp-compiler'.
+
+	Then building DeadCold is as simple as
+
+		fpc deadcold.pas
