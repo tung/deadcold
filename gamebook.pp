@@ -354,12 +354,12 @@ var
 	T: Integer;
 begin
 	{Open the file.}
-	{$ifdef WINDOWS}
-		Assign(F,'savegame\' + SC^.PC^.Name + '.txt');
-	{$else}
-		Assign(F,'savegame/' + SC^.PC^.Name + '.txt');
-	{$endif}
+	Assign(F,'savegame' + DirectorySeparator + SC^.PC^.Name + '.txt');
+	{$i-}
 	ReWrite(F);
+	{$+}
+	if IOResult = 0 then
+	begin
 		{Write the savefile version first of all.}
 		writeln(F,SaveFileVersion);
 
@@ -407,8 +407,9 @@ begin
 			end;
 		end;
 		Writeln( F , '-1' );
-	{Close the file}
-	Close(F);
+		{Close the file}
+		Close(F);
+	end;
 end;
 
 Function LoadGame( FName: String ): ScenarioPtr;
