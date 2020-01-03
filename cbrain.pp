@@ -461,12 +461,14 @@ begin
 			end;
 		end;
 	end;
-
-	{Update the critter's status.}
-	if NAttValue(C^.SF,NAG_StatusChange,SEF_Poison) <> 0 then begin
-		C^.HP := C^.HP - Random( 6 );
+	{Protect against the case where the creature has already died}
+	if SC^.CAct <> Nil then begin
+	    {Update the critter's status.}
+		if NAttValue(C^.SF,NAG_StatusChange,SEF_Poison) <> 0 then begin
+			C^.HP := C^.HP - Random( 6 );
+		end;
+		UpdateStatusList( C^.SF );
 	end;
-	UpdateStatusList( C^.SF );
 
 	if C^.HP < 0 then CritterDeath(SC,C,False);
 	C := SC^.CAct;
