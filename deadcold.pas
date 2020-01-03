@@ -8,6 +8,7 @@ var
 	rpm: RPGMenuPtr;
 
 begin
+	TextBackground(Black);
 	RPM := CreateRPGMenu( LightBlue , Green , LightGreen , 20 , 8 , 60 , 23 );
 	AddRPGMenuItem( RPM , 'Start New Game' , 1 );
 	AddRPGMenuItem( RPM , 'Load Saved Game' , 2 );
